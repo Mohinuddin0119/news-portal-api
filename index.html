@@ -7,8 +7,10 @@
     <!-- daisyui and tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/d5186fcd93.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-white min-h-screen text-black p-5 md:p-10">
+<body class=" text-black p-5 md:p-10 bg-white min-h-screen">
     <header class="">
         <div class="flex  flex-col md:flex-row justify-between items-center gap-5">
             <div class="flex items-center gap-3">
@@ -32,13 +34,25 @@
             </div>
         </div>
         <hr class="my-5">
-        <div id="newsCategoryContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 text-center gap-5 text-gray-400 ">
+        <div id="categoryBarContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 text-center gap-2 text-gray-400 ">
             <div class="hover:text-[#0d0f99]">
                 <button>Home</button>
             </div>
         </div>
+        <hr class="my-5">
     </header>
-    <main></main>
+    <!-- main start -->
+    <main class="">
+        <!-- search  -->
+        <div id="searchContainer" class="flex justify-center gap-2">
+            <input type="text" id="searchBox" placeholder="Type here category name.."  class="input md:w-2/4 input-bordered input-warning bg-white max-w">
+            <button onclick="handleSearch()" id="searchBtn" class="bg-[#0d0f99] px-3 py-3 text-white rounded-lg">Search</button>
+        </div>
+
+        <!-- single  news -->
+         <div id="newsContainer">
+         </div>
+    </main>
     <script src="./js/script.js"></script>
 </body>
 </html>

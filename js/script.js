@@ -1,8 +1,8 @@
 const loadData = async () => {
   const response = await fetch(
     `https://openapi.programming-hero.com/api/news/categories`
-  );
-  const data = await response.json();
+  )
+  const data = await response.json()
   const allData = data.data.news_category
 //   console.log(allData)
   const categoryBarContainer = document.getElementById('categoryBarContainer')
@@ -11,21 +11,24 @@ const loadData = async () => {
     const div = document.createElement('div')
     div.classList = 'hover:text-[#0d0f99]'
     div.innerHTML = `
-    <button>${item.category_name}</button>
+    <button onclick = "newsData('${item?.category_id}')">${item.category_name}</button>
     `
     categoryBarContainer.appendChild(div)
   })
 };
-const newsData = async() =>{
-    const res = await fetch(`https://openapi.programming-hero.com/api/news/category/01`)
+
+const newsData = async(catId) =>{
+    // console.log(catId)
+    const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${catId}`)
     const data = await res.json()
     const allItem = data.data
-    console.log(allItem)
+    // console.log(allItem)
     const newsContainer = document.getElementById('newsContainer')
+    newsContainer.innerHTML = ''
     allItem.forEach((item) =>{
-        console.log(item)
+        // console.log(item)
         const div = document.createElement('div')
-        div.classList ="flex flex-col md:flex-row justify-between items-center shadow-xl my-10"
+        div.classList ="flex flex-col md:flex-row justify-between items-center rounded-lg shadow-xl my-10"
         div.innerHTML = `
                 <div id="newsPhoto" class='w-full lg:w-3/4 lg:h-2/3'>
                     <img class='' src="${item?.thumbnail_url}" alt="">
@@ -64,8 +67,16 @@ const newsData = async() =>{
     })
 }
 const handleSearch = () =>{
-    console.log('handle searched')
+    const value = document.getElementById('searchBox').value
+    console.log(value)
+    if(value){
+      newsData(value)
+    }
+    else{
+      alert('please enter a valid number or name')
+    }
 }
-newsData()
+newsData('08')
 loadData(); 
+
 

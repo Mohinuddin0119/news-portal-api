@@ -19,14 +19,22 @@ const loadData = async () => {
 
 const newsData = async(catId) =>{
     // console.log(catId)
+
+    // show spinner
+    document.getElementById('spinnerContainer').classList.remove('hidden');
+
     const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${catId}`)
     const data = await res.json()
     const allItem = data.data
     // console.log(allItem)
+    
     const newsContainer = document.getElementById('newsContainer')
     newsContainer.innerHTML = ''
     allItem.forEach((item) =>{
-        // console.log(item)
+      // hide spinner
+        document.getElementById('spinnerContainer').classList.add('hidden');
+
+        console.log(item)
         const div = document.createElement('div')
         div.classList ="flex flex-col md:flex-row justify-between items-center rounded-lg shadow-xl my-10"
         div.innerHTML = `
@@ -57,7 +65,7 @@ const newsData = async(catId) =>{
                                 }</p>
                             </div>
                             <div id="detailsBtnContainer" class=''>
-                                <button id="detailsBtn" class='btn accent text-white'>Details</button>
+                                <button onclick = 'check()' id="detailsBtn" class='btn accent text-white'>Details</button>
                             </div>
                         </div>
                     </div>
@@ -73,8 +81,12 @@ const handleSearch = () =>{
       newsData(value)
     }
     else{
-      alert('please enter a valid number or name')
+      alert('please enter a valid number')
     }
+}
+
+const check = () =>{
+  console.log('clicked')
 }
 newsData('08')
 loadData(); 

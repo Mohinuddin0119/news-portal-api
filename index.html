@@ -14,12 +14,12 @@
     <header class="">
         <div class="flex  flex-col md:flex-row justify-between items-center gap-5">
             <div class="flex items-center gap-3">
-                <button class="btn bg-[#0d0f99] text-white border-none">News</button>
+                <button onclick="newsData('08')" class="btn bg-[#0d0f99] text-white border-none">News</button>
                 <h3 class="text-[#0d0f99] text-xl ">Portal</h3>
             </div>
             <div class="flex items-center gap-5">
                 <div>
-                    <button class="text-[#0d0f99]">News</button>
+                    <button onclick="newsData('08')" class="text-[#0d0f99]">News</button>
                     <div class="flex justify-center items-center">
                         <p class="border border-blue-900 w-1/2"></p>
                     </div>
@@ -43,6 +43,10 @@
     </header>
     <!-- main start -->
     <main class="">
+        <!-- loader -->
+         <div id="spinnerContainer" class="text-center my-10 hidden">
+            <span class="loading loading-spinner text-accent w-20"></span>
+         </div>
         <!-- search  -->
         <div id="searchContainer" class="flex justify-center gap-2">
             <input type="text" id="searchBox" placeholder="Type here category name.."  class="input md:w-2/4 input-bordered input-warning bg-white max-w">
